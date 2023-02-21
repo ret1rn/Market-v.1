@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        .menu-button {
+            all: unset;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 14px;
+            border: 1px solid gray;
+            color: gray;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        .menu-button:hover, .menu-button:active {
+            border-color: black;
+            color: black;
+            scale: 1.1;
+        }
+        aside {
+            width: 500px;
+            height: 100%;
+            position: fixed;
+            top: 0px;
+            right: -1000px;
+            background-color: #c4c4c4;
+            box-shadow: 0px 0px 10px #c4c4c4;
+            padding: 20px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            transition: .5s ease;
+        }
+        aside .order {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 100%;
+            height: 30%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 14px;
+        }
+        aside .order .description {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        aside .order button {
+            background-color: orange;
+            color: black;
+            font-size: 18px;
+            font-weight: 800;
+            border-radius: 14px;
+            padding: 10px 20px;
+            width: 100%;
+            border: none;
+            cursor: pointer;
+        }
+        aside .parent-container {
+            width: 100%;
+            height: 70%;
+            padding-top: 10px;
+            position: relative;
+        }
+        aside .cart-container {
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            overflow-y: scroll;
+        }
+        aside .cart-container .cart-item {
+            width: 100%;
+            height: fit-content;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            background-color: white;
+            border-radius: 14px;
+        }
+        .cart-item .left {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .cart-item .left img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            border-radius: 14px;
+        }
+        .cart-item .left .col {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            color: #000;
+        }
+        .left .col .title {
+            display: block;
+            width: 20ch;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .cart-item .right {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .cart-item .right .total-price {
+            color: #000;
+            font-size: 18px;
+        }
+        .cart-item .right .counter {
+            display: flex;
+            align-items: center;
+            border-radius: 4px;
+            background-color: #c4c4c4;
+        }
+        .right .counter button {
+            all: unset;
+            width: 40px;
+            height: 20px;
+            background-color: transparent;
+            text-align: center;
+            cursor: pointer;
+        }
+        .right .counter button:active {
+            scale: 1.4;
+            background-color: gray;
+        }
+        .sp-lg {
+            font-size: 24px;
+            font-weight: 900;
+            color: black;
+        }
+        .sp-md {
+            font-size: 18px;
+            font-weight: 700;
+            color: black;
+        }
+        .parent-container .blur {
+            width: 100%;
+            height: 100px !important;
+            background: linear-gradient(360deg, #c4c4c4, transparent);
+            position: absolute;
+            bottom: 0px;
+        }
+        .flex {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: baselinec;
+        }
+    </style>
+    <title>Market</title>
+</head>
+<body>
+    
+    <button data-menu-open class="menu-button" >корзина</button>
+
+    <aside>
+        <div class="flex">
+            <span class="sp-lg" >Корзина</span>
+            <button data-menu-close >x</button>
+        </div>
+        <div class="parent-container">
+            <div class="blur"></div>
+            <div class="cart-container">
+                <div class="cart-item">
+                    <div class="left">
+                        <img src="https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg" alt="">
+                        <div class="col">
+                            <span class="title" >Mens Casual Premium Slim Fit T-Shirts </span>
+                            <span class="categ" >men's clothing</span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="counter">
+                            <button>+</button>
+                            <span>0</span>
+                            <button>-</button>
+                        </div>
+                        <span class="total-price" >10.000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="order">
+            <div class="description">
+                <span class="sp-md">Общая сумма</span>
+                <span class="sp-md total" >12.000$</span>
+            </div>
+            <button class="btn-order">
+                Оформить
+            </button>
+        </div>
+    </aside>
+
+    <div class="cen_txt">
+        <h1>В корзине: <span class="zero">0</span> товар</h1>
+    </div>
+    <div class="btns">
+        <button data-show class="btn">Показать первые 5</button>
+        <button data-showAll class="btn">Показать все</button>
+    </div>
+    <div class="container"></div>
+
+
+    <script type="module" src="./script.js"></script>
+</body>
+</html>
